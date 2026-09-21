@@ -1,0 +1,19 @@
+# ============================================
+# RAG 评估环境 — 使用官方 RAGAS 库
+# ============================================
+FROM python:3.12-slim
+
+# 安装编译工具（scikit-network 需要 gcc）
+RUN apt-get update && apt-get install -y \
+    gcc g++ build-essential python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# 装 RAGAS
+RUN pip install --no-cache-dir ragas==0.4.3 rapidfuzz
+
+WORKDIR /app
+
+COPY evaluate_rag_official.py /app/evaluate_rag.py
+COPY rag-test-data.json /app/
+
+CMD ["python", "-u", "evaluate_rag.py"]

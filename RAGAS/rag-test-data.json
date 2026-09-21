@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "description": "RAG test dataset for NBHX financial documents",
+    "version": "1.0",
+    "total_questions": 28,
+    "source_files": [
+      "project_finance_approval_guide.docx",
+      "huaxiang_pricing_model.xlsx",
+      "181_development_work_order.docx",
+      "project_finance_training.pdf",
+      "profit_statement_template.xlsx",
+      "PM_project_allocation.xlsx",
+      "NICE_internal_units.xlsx",
+      "cost_card_manual.pdf"
+    ]
+  },
+  "test_data": [
+    {
+      "id": "FIN-APR-001",
+      "difficulty": "easy",
+      "query": "项目商业计划审批表的操作流程是怎样的？",
+      "answer": "经总经理审批-FONE->项目成本控制->上传成本卡->运行成本卡(整体规则overall rules running)->确认财务指标(是否与Excel一致/是否需要上报)->同步OA审批流程(OA数传:newOA接口送数OA interface delivery-ESB版本带参数)->OA IBP流程信息补充(客户经理/项目经理/预算增加工厂)->提交",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 1 -> 1.1 Steps"
+    },
+    {
+      "id": "FIN-APR-002",
+      "difficulty": "medium",
+      "query": "ECN审核中如果生产地公司选错了怎么办？",
+      "answer": "生产地公司需要选项目主生产地，如果选错需要指定回退发起来修改。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 2 -> 2.1 Review Points -> Item 1"
+    },
+    {
+      "id": "FIN-APR-003",
+      "difficulty": "medium",
+      "query": "项目量产后还能继续使用9999开发费内部订单号吗？",
+      "answer": "项目量产后不能再使用原量产9999开发费内部订单号。目前所有项目已经切换9999内部订单号。若仍出现非9999内部订单号有两种情况：情况1：根据发起日期判断，若为历史遗留单据则通过；情况2：项目名称后有工厂二字，是非项目类为做高新开发领料专门创建，不能发起ECN。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 2 -> 2.1 Review Points -> Item 2"
+    },
+    {
+      "id": "FIN-APR-004",
+      "difficulty": "medium",
+      "query": "ECN审核中对预算成本和预算收入的关系有什么要求？",
+      "answer": "最好收入大于成本10%，最基本的需要收入覆盖成本。若收入倒挂，需要与市场确认，若市场确认无误，则正常披露该变更的损益情况。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 2 -> 2.1 Review Points -> Item 6"
+    },
+    {
+      "id": "FIN-APR-005",
+      "difficulty": "medium",
+      "query": "零件成本变化审核时需要附带什么证明材料？",
+      "answer": "需要附带计算清单、供应商报价单、简单的计算逻辑之一。需要检查其计算逻辑，成本增加为Delta值。比如外购转自制，其中外购的价格是否是之前预算的价格或者实际定点价，自制的计算是否合理。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 2 -> 2.1 Review Points -> Item 7"
+    },
+    {
+      "id": "FIN-APR-006",
+      "difficulty": "hard",
+      "query": "财务对零件类ECN的审核意见怎么写？需要包含哪些内容？",
+      "answer": "首先区分是内部变更、客户变更还是超预算。零件类：收入等于成本时写收入覆盖成本；收入大于或小于成本时写零件成本单套盈利或损失具体金额，以及IBP Volume、年均Volume、年盈利或损失、项目周期盈利或损失。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 2 -> 2.2 Financial Review Opinions -> Parts"
+    },
+    {
+      "id": "FIN-APR-007",
+      "difficulty": "hard",
+      "query": "财务对投资类ECN的审核意见怎么写？",
+      "answer": "收入等于成本：收入覆盖成本；收入大于或小于成本：投资净利润盈利亏损具体金额。若零件、投资、开发费等均有涉及，最后需要计算合计盈利或亏损。其他特殊情况请备注。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 2 -> 2.2 Financial Review Opinions -> Investment"
+    },
+    {
+      "id": "FIN-APR-008",
+      "difficulty": "medium",
+      "query": "Ariba审核中投资编号有什么使用限制？",
+      "answer": "投资编号不得使用2年前的投资编号，即2026年不能使用2024年的投资编号。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 5 -> 5.1 Review Points -> Item 1"
+    },
+    {
+      "id": "FIN-APR-009",
+      "difficulty": "medium",
+      "query": "Ariba审核中PR金额与预算对比有什么要求？",
+      "answer": "PR金额需要与IBP或ECN中的预算对比，需等于预算，否则拒掉。同时投资预算按单副控制，即一副模具不能超过它的预算，不能借用其他模具预算。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 5 -> 5.1 Review Points -> Item 4"
+    },
+    {
+      "id": "FIN-APR-010",
+      "difficulty": "hard",
+      "query": "BOM清单和工时定额审核的同意和不同意条件分别是什么？",
+      "answer": "同意：耗用小于等于IBP或内控预算，工时小于等于IBP加ECN预算。不同意：项目经理需要审核BOM及工时，若无误请回复审核无误。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 4 -> 4.4 Review Opinion Examples"
+    },
+    {
+      "id": "FIN-APR-011",
+      "difficulty": "medium",
+      "query": "合同评审中项目财务的审核范围是什么？",
+      "answer": "项目财务负责投资类收入、开发费收入、设计费收入、ECN收入终身负责，以及量产的首次零件价格。工厂财务负责量产后价格更新、样件、售后件。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 3 -> 3.1 Scope"
+    },
+    {
+      "id": "FIN-APR-012",
+      "difficulty": "easy",
+      "query": "项目商业计划审批表审批通过后需要做什么？",
+      "answer": "邮件通知工厂财务反馈和确认投资编号信息；提醒项目经理确认是否市场增加过9999开发费内部订单号；提醒模具报价工程师增加投资清单。",
+      "source_file": "project_finance_approval_guide.docx",
+      "source_chapter": "Chapter 1 -> 1.3 Post-Approval"
+    },
+    {
+      "id": "PRICE-001",
+      "difficulty": "easy",
+      "query": "PP+LGF20材料高产量和低产量的单价分别是多少？",
+      "answer": "PP+LGF20高产量单价为15.81元每公斤，低产量单价为12.86元每公斤。都属于IM注塑类材料。",
+      "source_file": "huaxiang_pricing_model.xlsx",
+      "source_chapter": "Resin Price Sheet -> IM -> PP+LGF20"
+    },
+    {
+      "id": "PRICE-002",
+      "difficulty": "easy",
+      "query": "IM注塑模具基础系数表中，长度小于等于100毫米的模具系数是多少？",
+      "answer": "长度小于等于100毫米时，系数L为620，系数W为380，系数H为0。",
+      "source_file": "huaxiang_pricing_model.xlsx",
+      "source_chapter": "Mold Coefficient Table -> L<=100"
+    },
+    {
+      "id": "PRICE-003",
+      "difficulty": "medium",
+      "query": "电镀件Chrome的模具工艺乘数是多少？",
+      "answer": "电镀件的模具工艺乘数为1.58，说明电镀件模具精度要求高，价格需要乘以1.58倍。相比之下喷涂件乘数为1.05，膜内装饰乘数为1.38。",
+      "source_file": "huaxiang_pricing_model.xlsx",
+      "source_chapter": "Mold Coefficient Table -> PartGroup Process Multiplier"
+    },
+    {
+      "id": "PRICE-004",
+      "difficulty": "medium",
+      "query": "一模两腔的模具模腔乘数是多少？",
+      "answer": "一模两腔或两套的模腔乘数为1.3；一腔两套模左右对称件乘数为1.95；其他单腔标准乘数为1。",
+      "source_file": "huaxiang_pricing_model.xlsx",
+      "source_chapter": "Mold Coefficient Table -> Cavity Multiplier"
+    },
+    {
+      "id": "PRICE-005",
+      "difficulty": "medium",
+      "query": "PP通用料和ABS通用料的价格分别是多少？",
+      "answer": "PP通用料以上PP均不匹配价格为9.88元每公斤。ABS通用料非电镀价格为14.84元每公斤，ABS电镀件价格为18元每公斤。",
+      "source_file": "huaxiang_pricing_model.xlsx",
+      "source_chapter": "Resin Price Sheet -> IM -> PP Default / ABS"
+    },
+    {
+      "id": "PRICE-006",
+      "difficulty": "hard",
+      "query": "注塑机200吨和2500吨的End of Arm夹具价格分别是多少？",
+      "answer": "End of Arm夹具：注塑机200吨为6000元，300吨也是6000元，500吨为8000元，1500吨为25000元，2500吨为40000元，其他未匹配为60000元。",
+      "source_file": "huaxiang_pricing_model.xlsx",
+      "source_chapter": "Fixture Pricing Table -> End of Arm"
+    },
+    {
+      "id": "WORK-ORDER-001",
+      "difficulty": "easy",
+      "query": "181开发试制工单对应的费用科目是什么？",
+      "answer": "费用科目为6609250200开发费直接投入。181开发试制工单的材料消耗产生的会计凭证直接进入开发直接投入费用中。",
+      "source_file": "181_development_work_order.docx",
+      "source_chapter": "Full document"
+    },
+    {
+      "id": "WORK-ORDER-002",
+      "difficulty": "medium",
+      "query": "181开发试制订单下达后会产生什么特征的批次号？",
+      "answer": "181开发试制订单使用co02事务码下达，会产生以K结尾的跟踪批次号。",
+      "source_file": "181_development_work_order.docx",
+      "source_chapter": "Full document"
+    },
+    {
+      "id": "WORK-ORDER-003",
+      "difficulty": "easy",
+      "query": "开发试制虚拟总成料号条码入库会产生会计凭证吗？",
+      "answer": "不会。开发试制虚拟总成料号条码入库不会产生任何金额上的会计凭证。",
+      "source_file": "181_development_work_order.docx",
+      "source_chapter": "Section 5.3"
+    },
+    {
+      "id": "TRAINING-001",
+      "difficulty": "medium",
+      "query": "项目财务流程中5个版本各自的关注点是什么？",
+      "answer": "主变更关注基于RFQ更新客户BF后的数据同步；内控版基于主变更对工时耗用模检工优化作为内部挑战目标；SOP-3版销售更新暂估价并更新实际采购单价投资开发费实测耗用及工时；SOP版项目经理跟踪节拍爬坡数据销售更新正式价复核最终成本；SOP+3版耗用和工时与工厂打和作为项目移交给工厂的最终数据结案汇报。",
+      "source_file": "project_finance_training.pdf",
+      "source_chapter": "Section 2 - Version overview"
+    },
+    {
+      "id": "TRAINING-002",
+      "difficulty": "medium",
+      "query": "投资金额审批中大于500万和100到500万分别由什么机构审批？",
+      "answer": "大于500万由集团执管会审批需周董批准。100到500万由集团运营例会审批每周二张放总负责。小于100万由事业部内部审批。",
+      "source_file": "project_finance_training.pdf",
+      "source_chapter": "Section 3 - Investment Approval Standards"
+    },
+    {
+      "id": "TRAINING-003",
+      "difficulty": "hard",
+      "query": "客户变更小于50万和大于100万分别需要什么审批材料？",
+      "answer": "客户变更小于50万只需ECN成本预算表。50到100万需要ECN成本预算表加执管会审批。大于100万需要ECN成本预算表加执管会审批加投资会会议纪要如有加股份批件。",
+      "source_file": "project_finance_training.pdf",
+      "source_chapter": "Section 3 - NICE BG Investment Number"
+    },
+    {
+      "id": "PROFIT-TPL-001",
+      "difficulty": "easy",
+      "query": "项目利润表总览模板中每个版本占几列？分别是什么含义？",
+      "answer": "每个版本占3列，分别是Total总额、百分比、SOP年单套。投资段和研发费段的百分比和SOP年单套列留空。",
+      "source_file": "profit_statement_template.xlsx",
+      "source_chapter": "Instructions sheet"
+    },
+    {
+      "id": "PM-ALLOC-001",
+      "difficulty": "easy",
+      "query": "项目经理IHX属于哪个子公司和哪个大区？负责哪些项目？",
+      "answer": "IHX属于华翔内饰trim子公司、北方区。负责北汽极狐的N40QB CNSL中央通道全新项目、北汽新能源的X91中央通道和N82KS CNSL。",
+      "source_file": "PM_project_allocation.xlsx",
+      "source_chapter": "PM Project List"
+    },
+    {
+      "id": "ORG-001",
+      "difficulty": "easy",
+      "query": "华翔汽车内饰系统佛山有限公司的编码和财务负责人是谁？",
+      "answer": "华翔汽车内饰系统佛山有限公司编码为2607，财务负责人为黎志辉，属于西南区，区域负责人为陆善清。",
+      "source_file": "NICE_internal_units.xlsx",
+      "source_chapter": "Sheet1"
+    },
+    {
+      "id": "COSTCARD-001",
+      "difficulty": "medium",
+      "query": "成本卡中市场部填页由谁填写？年降一般按什么规则放置？",
+      "answer": "市场部填页由负责本项目的销售填写。年降一般按3%放置3年，可在当年或次年放置年降，会自动代入计算。快降则按实际情况放置。",
+      "source_file": "cost_card_manual.pdf",
+      "source_chapter": "Market Department Fill Page"
+    }
+  ]
+}
